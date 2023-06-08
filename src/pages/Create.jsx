@@ -19,7 +19,7 @@ const Create = () => {
             id:users[users.length-1].id + 1,name,email,
         }))
         navigate('/')
-    }
+    } 
     
   return (
     <div className="d-flex w-100 vh-100 justify-content-center align-items-center">

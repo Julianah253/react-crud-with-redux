@@ -1,9 +1,17 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
+import { deleteUser } from '../redux/userSlice'
+
+
 const Home = () => {
    const users = useSelector((state) => state.users)
+   const dispatch  = useDispatch()
    console.log(users)
+
+   const handleDelete = (id) => {
+        dispatch(deleteUser({id})) 
+    } 
   return (
     <div className="container mt-5">
         <h2 className="text-center my-5 text-secondary"> Crud Application using Redux Toolkit </h2>
@@ -26,7 +34,7 @@ const Home = () => {
                     <td>{user.email}</td>
                     <td>
                         <Link to={`/update/${user.id}`} className="btn btn-primary me-3" > Edit </Link>
-                        <button className="btn btn-danger"> Delete </button>
+                        <button className="btn btn-danger" onClick={()=>{handleDelete(user.id)}}> Delete </button>
                     </td>
                 </tr>
                 ))
